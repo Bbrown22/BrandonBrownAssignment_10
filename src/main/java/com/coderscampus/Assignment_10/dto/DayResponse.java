@@ -2,17 +2,16 @@ package com.coderscampus.Assignment_10.dto;
 
 import java.util.Objects;
 
-//import java.util.Objects;
 
 public class DayResponse {
-	private Long targetCalories;
+	private String targetCalories;
 	private String diet;
 	private String exclude;
 	
-	public Long getTargetCalories() {
+	public String getTargetCalories() {
 		return targetCalories;
 	}
-	public void setTargetCalories(Long targetCalories) {
+	public void setTargetCalories(String targetCalories) {
 		this.targetCalories = targetCalories;
 	}
 	public String getDiet() {
