@@ -7,7 +7,16 @@ public class WeekResponse {
 	private String targetCalories;
 	private String diet;
 	private String exclude;
-	
+	private String week;
+
+	public String getWeek() {
+		return week;
+	}
+
+	public void setWeek(String week) {
+		this.week = week;
+	}
+
 	public String getTargetCalories() {
 		return targetCalories;
 	}
@@ -26,32 +35,14 @@ public class WeekResponse {
 	public void setExcludeIngredients(String exclude) {
 		this.exclude = exclude;
 	}
-	@Override
-	public int hashCode() {
-		return Objects.hash(diet, exclude, targetCalories);
-	}
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		WeekResponse other = (WeekResponse) obj;
-		return Objects.equals(diet, other.diet) && Objects.equals(exclude, other.exclude)
-				&& Objects.equals(targetCalories, other.targetCalories);
-	}
+
 	@Override
 	public String toString() {
-		return "WeekResponse [targetCalories=" + targetCalories + ", diet=" + diet + ", excludeIngredients="
-				+ exclude + "]";
+		return "WeekResponse{" +
+				"targetCalories='" + targetCalories + '\'' +
+				", diet='" + diet + '\'' +
+				", exclude='" + exclude + '\'' +
+				", week='" + week + '\'' +
+				'}';
 	}
-	
-	
-	
-	
-	
-	
-
 }

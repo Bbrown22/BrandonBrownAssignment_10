@@ -55,7 +55,7 @@ public class MealPlanController {
 		UriComponentsBuilder builder = UriComponentsBuilder
 				.fromHttpUrl("https://api.spoonacular.com/mealplanner/generate")
 				.queryParam("apiKey","1a8d3fca280944d4a241292d1ddc0084")
-				.queryParam("timeFrame","week");
+				.queryParam("timeFrame","day");
 		if (targetCalories != null) {
 			builder.queryParam("targetCalories", targetCalories);
 		}
@@ -69,8 +69,10 @@ public class MealPlanController {
 		}
 		
 		URI uri = builder.build().toUri();
+
+		ResponseEntity<DayResponse> response = rt.getForEntity(uri, DayResponse.class);
 		
-		return rt.getForEntity(uri, DayResponse.class);
+		return response;
 		
 	}
 }

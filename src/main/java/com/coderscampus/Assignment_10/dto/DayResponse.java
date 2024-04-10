@@ -7,7 +7,17 @@ public class DayResponse {
 	private String targetCalories;
 	private String diet;
 	private String exclude;
-	
+
+	private String timeFrame;
+
+	public String getTimeFrame() {
+		return timeFrame;
+	}
+
+	public void setTimeFrame(String timeFrame) {
+		this.timeFrame = timeFrame;
+	}
+
 	public String getTargetCalories() {
 		return targetCalories;
 	}
@@ -26,31 +36,13 @@ public class DayResponse {
 	public void setExclude(String exclude) {
 		this.exclude = exclude;
 	}
-	@Override
-	public int hashCode() {
-		return Objects.hash(diet, exclude, targetCalories);
-	}
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		DayResponse other = (DayResponse) obj;
-		return Objects.equals(diet, other.diet) && Objects.equals(exclude, other.exclude)
-				&& Objects.equals(targetCalories, other.targetCalories);
-	}
+
 	@Override
 	public String toString() {
-		return "DayResponse [targetCalories=" + targetCalories + ", diet=" + diet + ", exclude=" + exclude + "]";
+		return "DayResponse{" +
+				"targetCalories='" + targetCalories + '\'' +
+				", diet='" + diet + '\'' +
+				", exclude='" + exclude + '\'' +
+				'}';
 	}
-	
-	
-	
-	
-	
-	
-
 }
