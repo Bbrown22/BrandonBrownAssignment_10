@@ -48,6 +48,7 @@ public class MealPlanController {
 	
 	@GetMapping("/mealplanner/day")
 	public ResponseEntity<DayResponse> getDayMeals(
+<<<<<<< HEAD
 	        @RequestParam(value = "targetCalories", required = false) Integer targetCalories,
 	        @RequestParam(value = "diet", required = false) String diet,
 	        @RequestParam(value = "exclude", required = false) String exclude) {
@@ -75,5 +76,34 @@ public class MealPlanController {
 	    ResponseEntity<DayResponse> responseEntity  = rt.getForEntity(uri, DayResponse.class);
 	    System.out.println(responseEntity);
 	    return responseEntity;
+=======
+			@RequestParam(value = "targetCalories", required = false) String targetCalories,
+			@RequestParam(required = false) String diet,
+			@RequestParam(value = "exclude", required = false) String exclude) throws MalformedURLException {
+		RestTemplate rt = new RestTemplate();
+		
+		UriComponentsBuilder builder = UriComponentsBuilder
+				.fromHttpUrl("https://api.spoonacular.com/mealplanner/generate")
+				.queryParam("apiKey","1a8d3fca280944d4a241292d1ddc0084")
+				.queryParam("timeFrame","day");
+		if (targetCalories != null) {
+			builder.queryParam("targetCalories", targetCalories);
+		}
+		
+		if (diet != null) {
+			builder.queryParam("diet", diet);
+		}
+		
+		if (exclude != null) {
+			builder.queryParam("exclude", exclude);
+		}
+		
+		URI uri = builder.build().toUri();
+
+		ResponseEntity<DayResponse> response = rt.getForEntity(uri, DayResponse.class);
+		
+		return response;
+		
+>>>>>>> 4e34c1fe89bbebb2e27473ec0bbb4f0a9b99faa7
 	}
 }
