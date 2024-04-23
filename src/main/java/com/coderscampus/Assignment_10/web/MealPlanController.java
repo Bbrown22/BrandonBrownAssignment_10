@@ -1,109 +1,77 @@
 package com.coderscampus.Assignment_10.web;
 
 import java.net.URI;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
-
 import com.coderscampus.Assignment_10.dto.DayResponse;
 import com.coderscampus.Assignment_10.dto.WeekResponse;
 
 @RestController
 public class MealPlanController {
 
-	@GetMapping("/mealplanner/week")
-	public ResponseEntity<WeekResponse> getWeekMeals(
-	        @RequestParam(value = "targetCalories", required = false) Integer targetCalories,
-	        @RequestParam(value = "diet", required = false) String diet,
-	        @RequestParam(value = "exclude", required = false) String exclude) {
+    @GetMapping("/mealplanner/week")
+    public ResponseEntity<WeekResponse> getWeekMeals(
+            @RequestParam(value = "targetCalories", required = false) Integer targetCalories,
+            @RequestParam(value = "diet", required = false) String diet,
+            @RequestParam(value = "exclude", required = false) String exclude) {
 
-	    UriComponentsBuilder builder = UriComponentsBuilder
-	            .fromHttpUrl("https://api.spoonacular.com/mealplanner/generate")
-	            .queryParam("apiKey","1a8d3fca280944d4a241292d1ddc0084")
-	            .queryParam("timeFrame","week");
+        UriComponentsBuilder builder = UriComponentsBuilder
+                .fromHttpUrl("https://api.spoonacular.com/mealplanner/generate")
+                .queryParam("apiKey","1a8d3fca280944d4a241292d1ddc0084")
+                .queryParam("timeFrame","week");
 
-	    if (targetCalories != null) {
-	        builder.queryParam("targetCalories", targetCalories);
-	    }
+        if (targetCalories != null) {
+            builder.queryParam("targetCalories", targetCalories);
+        }
 
-	    if (diet != null) {
-	        builder.queryParam("diet", diet);
-	    }
+        if (diet != null) {
+            builder.queryParam("diet", diet);
+        }
 
-	    if (exclude != null) {
-	        builder.queryParam("exclude", exclude);
-	    }
+        if (exclude != null) {
+            builder.queryParam("exclude", exclude);
+        }
 
-	    URI uri = builder.build().toUri();
+        URI uri = builder.build().toUri();
 
-	    RestTemplate rt = new RestTemplate();
-	    ResponseEntity<WeekResponse> responseEntity  = rt.getForEntity(uri, WeekResponse.class);
-	    System.out.println(responseEntity);
-	    return responseEntity;
-	}
-	
-	@GetMapping("/mealplanner/day")
-	public ResponseEntity<DayResponse> getDayMeals(
-<<<<<<< HEAD
-	        @RequestParam(value = "targetCalories", required = false) Integer targetCalories,
-	        @RequestParam(value = "diet", required = false) String diet,
-	        @RequestParam(value = "exclude", required = false) String exclude) {
+        RestTemplate rt = new RestTemplate();
+        ResponseEntity<WeekResponse> responseEntity  = rt.getForEntity(uri, WeekResponse.class);
+        System.out.println(responseEntity);
+        return responseEntity;
+    }
 
-	    UriComponentsBuilder builder = UriComponentsBuilder
-	            .fromHttpUrl("https://api.spoonacular.com/mealplanner/generate")
-	            .queryParam("apiKey","1a8d3fca280944d4a241292d1ddc0084")
-	            .queryParam("timeFrame","day");
+    @GetMapping("/mealplanner/day")
+    public ResponseEntity<DayResponse> getDayMeals(
+            @RequestParam(value = "targetCalories", required = false) Integer targetCalories,
+            @RequestParam(value = "diet", required = false) String diet,
+            @RequestParam(value = "exclude", required = false) String exclude) {
 
-	    if (targetCalories != null) {
-	        builder.queryParam("targetCalories", targetCalories);
-	    }
+        UriComponentsBuilder builder = UriComponentsBuilder
+                .fromHttpUrl("https://api.spoonacular.com/mealplanner/generate")
+                .queryParam("apiKey","1a8d3fca280944d4a241292d1ddc0084")
+                .queryParam("timeFrame","day");
 
-	    if (diet != null) {
-	        builder.queryParam("diet", diet);
-	    }
+        if (targetCalories != null) {
+            builder.queryParam("targetCalories", targetCalories);
+        }
 
-	    if (exclude != null) {
-	        builder.queryParam("exclude", exclude);
-	    }
+        if (diet != null) {
+            builder.queryParam("diet", diet);
+        }
 
-	    URI uri = builder.build().toUri();
+        if (exclude != null) {
+            builder.queryParam("exclude", exclude);
+        }
 
-	    RestTemplate rt = new RestTemplate();
-	    ResponseEntity<DayResponse> responseEntity  = rt.getForEntity(uri, DayResponse.class);
-	    System.out.println(responseEntity);
-	    return responseEntity;
-=======
-			@RequestParam(value = "targetCalories", required = false) String targetCalories,
-			@RequestParam(required = false) String diet,
-			@RequestParam(value = "exclude", required = false) String exclude) throws MalformedURLException {
-		RestTemplate rt = new RestTemplate();
-		
-		UriComponentsBuilder builder = UriComponentsBuilder
-				.fromHttpUrl("https://api.spoonacular.com/mealplanner/generate")
-				.queryParam("apiKey","1a8d3fca280944d4a241292d1ddc0084")
-				.queryParam("timeFrame","day");
-		if (targetCalories != null) {
-			builder.queryParam("targetCalories", targetCalories);
-		}
-		
-		if (diet != null) {
-			builder.queryParam("diet", diet);
-		}
-		
-		if (exclude != null) {
-			builder.queryParam("exclude", exclude);
-		}
-		
-		URI uri = builder.build().toUri();
+        URI uri = builder.build().toUri();
 
-		ResponseEntity<DayResponse> response = rt.getForEntity(uri, DayResponse.class);
-		
-		return response;
-		
->>>>>>> 4e34c1fe89bbebb2e27473ec0bbb4f0a9b99faa7
-	}
+        RestTemplate rt = new RestTemplate();
+        ResponseEntity<DayResponse> responseEntity  = rt.getForEntity(uri, DayResponse.class);
+        System.out.println(responseEntity);
+        return responseEntity;
+    }
 }
